@@ -1,0 +1,14 @@
+.option {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  color: #333;
+  background: #ddd;
+  border-bottom: 2px solid #aaa;
+}
+
+.option:hover {
+  color: #fff;
+  background: #007bff;
+}
+
