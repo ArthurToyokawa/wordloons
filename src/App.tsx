@@ -2,6 +2,7 @@ import React from 'react';
 import Select from 'react-select';
 import CustomOption from './components/customOption'
 import { Tower, towerData } from './models/data';
+import SelectedOptionsTable from './components/selectedOptionsTable';
 
 
 // Define options with images
@@ -27,7 +28,7 @@ const CustomSelect: React.FC = () => {
         opcoes selecionadas
       </div>
       <div>
-        
+        <SelectedOptionsTable selectedOptions={towerData} correctOption={towerData[0]}/>
       </div>
       </div>
   );

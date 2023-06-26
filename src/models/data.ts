@@ -34,5 +34,14 @@ export const towerData : Tower[] = [
     hasAbility: false,
     class: TowerClass.Primary
   },
+  {
+    value: "wizardmonkey",
+    label: "Wizard Monkey",
+    cost: 405,
+    imageSrc: "src/assets/wizard-monkey.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Magic
+  },
 
 ]
