@@ -1,7 +1,7 @@
 import React from 'react';
 import './selectedOptionsTable.css';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { Tower } from '../models/data';
+import { Option, TowerClass } from '../models/data';
 
 import Icon from '@mdi/react';
 import { mdiArrowDownBold, mdiArrowUpBold } from '@mdi/js';
@@ -9,8 +9,8 @@ import { mdiArrowDownBold, mdiArrowUpBold } from '@mdi/js';
 
 
 interface SelectedOptionsTableProps {
-  selectedOptions: Tower[];
-  correctOption: Tower;
+  selectedOptions: Option[];
+  correctOption: Option;
 }
 
 const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsTableProps) => (
@@ -48,7 +48,7 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
             align="center"
           >
             <label>
-              {tower.class}
+              {TowerClass[tower.class]}
             </label>
           </TableCell>
           <TableCell 

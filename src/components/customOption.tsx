@@ -1,15 +1,15 @@
 import React from 'react';
 import './customOption.css';
-import { Tower } from '../models/data';
+import { Option } from '../models/data';
 
 
 interface OptionsProps {
   innerProps: JSX.IntrinsicElements['div'];
   label: string;
-  data: Tower;
+  data: Option;
 }
 
-const Option: any = ({ innerProps, label, data }: OptionsProps) => (
+const CustomOption: any = ({ innerProps, label, data }: OptionsProps) => (
   <div {...innerProps} className='option'>
     <img src={data.imageSrc} alt={label} 
     style={{
@@ -22,4 +22,4 @@ const Option: any = ({ innerProps, label, data }: OptionsProps) => (
   </div>
 );
 
-export default Option;
+export default CustomOption;
