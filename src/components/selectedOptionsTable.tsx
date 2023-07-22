@@ -1,6 +1,6 @@
 import React from 'react';
 import './selectedOptionsTable.css';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
 import { Option, TowerClass } from '../models/data';
 
 import Icon from '@mdi/react';
@@ -18,8 +18,7 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
   <Table sx={{ minWidth: 650 }} aria-label="simple table">
     <TableHead>
       <TableRow>
-        <TableCell align="center">Image</TableCell>
-        <TableCell align="center">Name</TableCell>
+        <TableCell align="center">Tower</TableCell>
         <TableCell align="center">Class</TableCell>
         <TableCell align="center">Cost</TableCell>
         <TableCell align="center">Is upgrade</TableCell>
@@ -31,7 +30,7 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
           key={tower.label}
           sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
         >
-          <TableCell align="center">
+          <TableCell className='tableCell'>
           <img src={tower.imageSrc} alt={tower.label} 
             style={{
                 marginRight: 10,
@@ -39,25 +38,25 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
                 height: 40,
               }} 
             />
-          </TableCell>
-          <TableCell align="center">
-            {tower.label}
+            <Typography>
+              {tower.label}
+            </Typography>
           </TableCell>
           <TableCell 
-            className={correctOption.class === tower.class? 'right' : 'wrong'} 
+            className={correctOption.class === tower.class? 'right tableCell' : 'wrong tableCell'} 
             align="center"
           >
-            <label>
+            <Typography>
               {TowerClass[tower.class]}
-            </label>
+            </Typography>
           </TableCell>
           <TableCell 
             className={correctOption.cost === tower.cost? 'right' : 'partiallyRight'} 
             align="center"
           >
-            <label>
+            <Typography>
               {tower.cost}
-            </label>
+            </Typography>
             { correctOption.cost != tower.cost &&
               <Icon path={correctOption.cost < tower.cost? mdiArrowDownBold : mdiArrowUpBold} size={1} />
             }
@@ -66,9 +65,9 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
             className={correctOption.isUpgrade === tower.isUpgrade? 'right' : 'wrong'} 
             align="center"
           >
-            <label>
+            <Typography>
               {tower.isUpgrade? 'Is upgrade' : 'Is not upgrade'}
-            </label>
+            </Typography>
           </TableCell>
         </TableRow>
       ))}

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Select from 'react-select';
 import CustomOption from './components/customOption'
 import { Option, towerData } from './models/data';
@@ -32,6 +32,10 @@ const App: React.FC = () => {
     selectedOptions,
     gState
   ])
+  
+  useEffect(() =>{
+    newGame()
+  },[])
 
   const getRandomOption = useCallback((options: Option[]): Option => {
     return options[Math.floor(Math.random() * (options.length-1))]

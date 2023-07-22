@@ -4,6 +4,13 @@ export enum TowerClass {
   Magic,
   Support
 }
+export enum specialProperties {
+  Camo,
+  Explosive,
+  Magic,
+  Frost,
+  Support
+}
 //TODO put an special properties for if the tower has camo or anti metal properties 
 // maybe put an attack type ex:explosive, energy, phisical etc
 
