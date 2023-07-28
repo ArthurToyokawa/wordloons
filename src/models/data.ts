@@ -2,17 +2,20 @@ export enum TowerClass {
   Primary,
   Military,
   Magic,
-  Support
+  Support,
+  Hero
 }
-export enum specialProperties {
-  Camo,
-  Explosive,
-  Magic,
-  Frost,
-  Support
+export enum SpecialProperties {
+  CamoDetection,
+  ExplosiveAttack,
+  EnergyAttack,
+  FireAttack,
+  FrostAttack,
+  AcidAttack,
+  AntiLead
 }
-//TODO put an special properties for if the tower has camo or anti metal properties 
-// maybe put an attack type ex:explosive, energy, phisical etc
+//TODO put an water tower/land tower property
+
 
 export type Option = {
   value: string
@@ -22,6 +25,10 @@ export type Option = {
   isUpgrade: boolean // upgrade or tower
   hasAbility: boolean // if has activatable ability
   class: TowerClass
+  specialProperties: SpecialProperties[]
+  attackDamage: number,
+  attackPierce: number
+  towerRange: number
 }
 
 export const towerData : Option[] = [
@@ -32,7 +39,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/dart-monkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Primary
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 2,
+    towerRange: 32,
   },
   {
     value: "boomerangmonkey",
@@ -41,7 +52,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Boomerang_Monkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Primary
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 4,
+    towerRange: 40,
   },
   {
     value: "bombshooter",
@@ -50,7 +65,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/Bomb_Shooter.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Primary
+    class: TowerClass.Primary,
+    specialProperties: [SpecialProperties.ExplosiveAttack, SpecialProperties.AntiLead],
+    attackDamage: 1,
+    attackPierce: 14,
+    towerRange: 40,
   },
   {
     value: "tackshooter",
@@ -59,7 +78,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Tack_Shooter.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Primary
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 1,
+    towerRange: 23,
   },
   {
     value: "icemonkey",
@@ -68,7 +91,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/Ice_Monkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Primary
+    class: TowerClass.Primary,
+    specialProperties: [SpecialProperties.FrostAttack],
+    attackDamage: 1,
+    attackPierce: 30,
+    towerRange: 20,
   },
   {
     value: "gluegunner",
@@ -77,7 +104,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-GlueGunner.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Primary
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 0,
+    attackPierce: 1,
+    towerRange: 46,
   },
   {
     value: "snipermonkey",
@@ -86,7 +117,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Sniper_Monkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Military
+    class: TowerClass.Military,
+    specialProperties: [],
+    attackDamage: 2,
+    attackPierce: 1,
+    towerRange: 999,
   },
   {
     value: "monkeysub",
@@ -95,7 +130,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Monkey_Sub.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Military
+    class: TowerClass.Military,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 2,
+    towerRange: 42,
   },
   {
     value: "monkeybuccaneer",
@@ -104,7 +143,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Monkey_Buccaneer.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Military
+    class: TowerClass.Military,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 4,
+    towerRange: 60,
   },
   {
     value: "monkeyace",
@@ -113,7 +156,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Monkey_Ace.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Military
+    class: TowerClass.Military,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 5,
+    towerRange: 999,
   },
   {
     value: "helipilot",
@@ -122,7 +169,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Heli_Pilot.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Military
+    class: TowerClass.Military,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 3,
+    towerRange: 999,
   },
   {
     value: "mortarmonkey",
@@ -131,7 +182,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-MortarMonkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Military
+    class: TowerClass.Military,
+    specialProperties: [SpecialProperties.ExplosiveAttack, SpecialProperties.AntiLead],
+    attackDamage: 1,
+    attackPierce: 40,
+    towerRange: 999,
   },
   {
     value: "dartlinggunner",
@@ -140,7 +195,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-DartlingGunner.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Military
+    class: TowerClass.Military,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 1,
+    towerRange: 999,
   },
   {
     value: "wizardmonkey",
@@ -149,7 +208,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/wizard-monkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Magic
+    class: TowerClass.Magic,
+    specialProperties: [SpecialProperties.EnergyAttack, SpecialProperties.AntiLead],
+    attackDamage: 1,
+    attackPierce: 3,
+    towerRange: 40,
   },
   {
     value: "supermonkey",
@@ -158,7 +221,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/BTD6_Super_Monkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Magic
+    class: TowerClass.Magic,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 1,
+    towerRange: 50,
   },
   {
     value: "ninjamonkey",
@@ -167,7 +234,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-NinjaMonkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Magic
+    class: TowerClass.Magic,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 2,
+    towerRange: 40,
   },
   {
     value: "alchemist",
@@ -176,7 +247,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/Monkey_Alchemist.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Magic
+    class: TowerClass.Magic,
+    specialProperties: [SpecialProperties.AcidAttack, SpecialProperties.AntiLead],
+    attackDamage: 0,
+    attackPierce: 15,
+    towerRange: 45,
   },
   {
     value: "druid",
@@ -185,7 +260,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/Druid_Monkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Magic
+    class: TowerClass.Magic,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 1,
+    towerRange: 35,
   },
   {
     value: "bananafarm",
@@ -194,7 +273,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-BananaFarm.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Support
+    class: TowerClass.Support,
+    specialProperties: [],
+    attackDamage: 0,
+    attackPierce: 0,
+    towerRange: 40,
   },
   {
     value: "spikefactory",
@@ -203,7 +286,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-SpikeFactory.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Support
+    class: TowerClass.Support,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 5,
+    towerRange: 34,
   },
   {
     value: "monkeyvillage",
@@ -212,7 +299,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-MonkeyVillage.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Support
+    class: TowerClass.Support,
+    specialProperties: [],
+    attackDamage: 0,
+    attackPierce: 0,
+    towerRange: 40,
   },
   {
     value: "engineermonkey",
@@ -221,7 +312,11 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-EngineerMonkey.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Support
+    class: TowerClass.Support,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 3,
+    towerRange: 40,
   },
   {
     value: "beasthandler",
@@ -230,11 +325,199 @@ export const towerData : Option[] = [
     imageSrc: "src/assets/000-BeastHandler.webp",
     isUpgrade: false,
     hasAbility: false,
-    class: TowerClass.Support
+    class: TowerClass.Support,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 4,
+    towerRange: 20,
   },
-
 ]
 
+//todo check if ezili and churchill pop leads
+export const heroData : Option[] = [
+  {
+    value: "quincy",
+    label: "Quincy",
+    cost: 585,
+    imageSrc: "src/assets/QuincyPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 3,
+    towerRange: 50,
+  },
+  {
+    value: "gwendolin",
+    label: "Gwendolin",
+    cost: 785,
+    imageSrc: "src/assets/GwendolinPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.FireAttack],
+    attackDamage: 1,
+    attackPierce: 3,
+    towerRange: 38,
+  },
+  {
+    value: "strikerjones",
+    label: "Striker Jones",
+    cost: 810,
+    imageSrc: "src/assets/StrikerJonesPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.ExplosiveAttack, SpecialProperties.AntiLead],
+    attackDamage: 1,
+    attackPierce: 10,
+    towerRange: 55,
+  },
+  {
+    value: "obyngreenfoot",
+    label: "Obyn Greenfoot",
+    cost: 700,
+    imageSrc: "src/assets/ObynGreenFootPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.EnergyAttack, SpecialProperties.AntiLead],
+    attackDamage: 2,
+    attackPierce: 4,
+    towerRange: 43,
+  },
+  {
+    value: "captainchurchill",
+    label: "Captain Churchill",
+    cost: 2160,
+    imageSrc: "src/assets/CaptainChurchillPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.ExplosiveAttack, SpecialProperties.AntiLead],
+    attackDamage: 1,
+    attackPierce: 3,
+    towerRange: 63,
+  },
+  {
+    value: "benjamin",
+    label: "Benjamin",
+    cost: 1295,
+    imageSrc: "src/assets/BenjaminPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [],
+    attackDamage: 0,
+    attackPierce: 0,
+    towerRange: 20,
+  },
+  {
+    value: "ezili",
+    label: "Ezili",
+    cost: 650,
+    imageSrc: "src/assets/EziliPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.EnergyAttack, SpecialProperties.AntiLead, SpecialProperties.CamoDetection],
+    attackDamage: 1,
+    attackPierce: 5,
+    towerRange: 43,
+  },
+  {
+    value: "patfusty",
+    label: "Pat Fusty",
+    cost: 865,
+    imageSrc: "src/assets/PatFustyPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.AntiLead],
+    attackDamage: 3,
+    attackPierce: 1,
+    towerRange: 24,
+  },
+  {
+    value: "adora",
+    label: "Adora",
+    cost: 1080,
+    imageSrc: "src/assets/AdoraPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.EnergyAttack, SpecialProperties.AntiLead],
+    attackDamage: 1,
+    attackPierce: 5,
+    towerRange: 45,
+  },
+  {
+    value: "admiralbrickell",
+    label: "Admiral Brickell",
+    cost: 970,
+    imageSrc: "src/assets/AdmiralBrickellPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.ExplosiveAttack, SpecialProperties.AntiLead],
+    attackDamage: 3,
+    attackPierce: 1,
+    towerRange: 50,
+  },
+  {
+    value: "etienne",
+    label: "Etienne",
+    cost: 920,
+    imageSrc: "src/assets/EtiennePortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 2,
+    towerRange: 55,
+  },
+  {
+    value: "sauda",
+    label: "Sauda",
+    cost: 650,
+    imageSrc: "src/assets/SaudaPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.CamoDetection],
+    attackDamage: 1,
+    attackPierce: 4,
+    towerRange: 23,
+  },
+  {
+    value: "psi",
+    label: "Psi",
+    cost: 1080,
+    imageSrc: "src/assets/PsiPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.EnergyAttack],
+    attackDamage: 1,
+    attackPierce: 1,
+    towerRange: 999,
+  },
+  {
+    value: "geraldo",
+    label: "Geraldo",
+    cost: 755,
+    imageSrc: "src/assets/GeraldoPortrait.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Hero,
+    specialProperties: [SpecialProperties.EnergyAttack],
+    attackDamage: 1,
+    attackPierce: 5,
+    towerRange: 40,
+  },
+]
 
 export const upgradeData : Option[] = [
   {
@@ -244,7 +527,11 @@ export const upgradeData : Option[] = [
     imageSrc: "src/assets/sharp-darts.png",
     isUpgrade: true,
     hasAbility: false,
-    class: TowerClass.Primary
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 0,
+    attackPierce: 0,
+    towerRange: 0,
   },
 
 ]

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Select from 'react-select';
 import CustomOption from './components/customOption'
-import { Option, towerData } from './models/data';
+import { Option, towerData, heroData } from './models/data';
 import SelectedOptionsTable from './components/selectedOptionsTable';
 import { Button, Grid, Typography } from '@mui/material';
 
@@ -13,7 +13,7 @@ enum GameState {
 
 const App: React.FC = () => {
   
-  const [options, setOptions] = useState<Option[]>(towerData)
+  const [options, setOptions] = useState<Option[]>([...towerData, ...heroData])
   const [correctOption, setCorrectOption] = useState<Option>()
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([])
   const [gState, setGState] = useState<GameState>(GameState.STARTED)
@@ -22,7 +22,7 @@ const App: React.FC = () => {
   
   const newGame = useCallback(() => {
     // get options based on settings when implemented
-    setOptions(towerData)
+    setOptions([...towerData, ...heroData])
     setCorrectOption(getRandomOption(options))
     setSelectedOptions([])
     setGState(GameState.STARTED)
@@ -85,10 +85,7 @@ const App: React.FC = () => {
             />
         </Grid>
       </Grid>
-      <div>
-        opcoes selecionadas
-      </div>
-      { correctOption &&
+      { correctOption && selectedOptions.length > 0 &&
         <div>
           <SelectedOptionsTable selectedOptions={selectedOptions} correctOption={correctOption}/>
         </div>
@@ -96,6 +93,27 @@ const App: React.FC = () => {
       { gState === GameState.WON &&
         <Typography> YOU WON</Typography>
       }
+      <Typography >
+        Data is based on patch 38.0 
+      <Typography >
+      </Typography>
+        Tower data was taken from the bloons Wiki https://bloons.fandom.com/
+      <Typography >
+      </Typography>
+        Monkey knowedge not accounted for
+      <Typography >
+      </Typography>
+        Tower cost is based on hard mode costs
+      <Typography >
+      </Typography>
+        Hero stats are on level 1
+      <Typography >
+      </Typography>
+        Psi damage is set as 1
+      <Typography >
+      </Typography>
+        Towers with global range(sniper) or that move(heli) are counted as having 999 range
+      </Typography>
     </div>
   );
 };
