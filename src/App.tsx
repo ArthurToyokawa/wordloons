@@ -27,10 +27,7 @@ const App: React.FC = () => {
     setSelectedOptions([])
     setGState(GameState.STARTED)
   },[
-    options,
-    correctOption,
-    selectedOptions,
-    gState
+    //settings
   ])
   
   useEffect(() =>{
@@ -56,12 +53,7 @@ const App: React.FC = () => {
         setGState(GameState.WON)
       }
     }
-  },[
-    options,
-    correctOption,
-    selectedOptions,
-    gState
-  ])
+  },[options, correctOption, selectedOptions])
   
   return (
     <div style={{padding: '50px 100px'}}>
@@ -91,29 +83,31 @@ const App: React.FC = () => {
         </div>
       }
       { gState === GameState.WON &&
-        <Typography> YOU WON</Typography>
+        <Typography variant='h6'> YOU WON</Typography>
       }
-      <Typography >
-        Data is based on patch 38.0 
-      <Typography >
-      </Typography>
-        Tower data was taken from the bloons Wiki https://bloons.fandom.com/
-      <Typography >
-      </Typography>
-        Monkey knowedge not accounted for
-      <Typography >
-      </Typography>
-        Tower cost is based on hard mode costs
-      <Typography >
-      </Typography>
-        Hero stats are on level 1
-      <Typography >
-      </Typography>
-        Psi damage is set as 1
-      <Typography >
-      </Typography>
-        Towers with global range(sniper) or that move(heli) are counted as having 999 range
-      </Typography>
+      <div style={{position: 'absolute', bottom: 0}}>
+        <Typography variant='caption'>
+          Data is based on patch 38.0 
+        <Typography >
+        </Typography>
+          Tower data was taken from the bloons Wiki https://bloons.fandom.com/
+        <Typography >
+        </Typography>
+          Monkey knowedge not accounted for
+        <Typography >
+        </Typography>
+          Tower cost is based on hard mode costs
+        <Typography >
+        </Typography>
+          Hero stats are on level 1
+        <Typography >
+        </Typography>
+          Psi damage is set as 1
+        <Typography >
+        </Typography>
+          Towers with global range(sniper) or that move(heli) are counted as having 999 range
+        </Typography>
+      </div>
     </div>
   );
 };
