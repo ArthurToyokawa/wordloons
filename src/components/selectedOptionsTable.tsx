@@ -18,7 +18,9 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
     const correctPs = correctOption.specialProperties;
     if(correctPs.length === 0 && towerProperties.length === 0) {
       return 'right';
-    }else {
+    } else if (correctPs.length === 0 || towerProperties.length === 0) {
+      return 'wrong';
+    } else {
       const match = towerProperties.map((p) => {
         return correctPs.indexOf(p) !== -1
       })
@@ -53,7 +55,7 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
             key={tower.label}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
-            <TableCell className='tableCell'>
+            <TableCell className={correctOption.class === tower.class? 'right tableCell' : 'wrong tableCell'} >
             <img src={tower.imageSrc} alt={tower.label} 
               style={{
                   marginRight: 10,
@@ -96,20 +98,26 @@ const SelectedOptionsTable = ({selectedOptions, correctOption}: SelectedOptionsT
               </Typography>
             </TableCell>
             <TableCell 
-              className={correctOption.isUpgrade === tower.isUpgrade? 'right' : 'wrong'} 
+              className={correctOption.attackDamage === tower.attackDamage? 'right' : 'partiallyRight'} 
               align="center"
             >
               <Typography>
-                {tower.isUpgrade? 'Is upgrade' : 'Is not upgrade'}
+                {tower.attackDamage}
               </Typography>
+              { correctOption.attackDamage != tower.attackDamage &&
+                <Icon path={correctOption.attackDamage < tower.attackDamage? mdiArrowDownBold : mdiArrowUpBold} size={1} />
+              }
             </TableCell>
             <TableCell 
-              className={correctOption.isUpgrade === tower.isUpgrade? 'right' : 'wrong'} 
+              className={correctOption.towerRange === tower.towerRange? 'right' : 'partiallyRight'} 
               align="center"
             >
               <Typography>
-                {tower.isUpgrade? 'Is upgrade' : 'Is not upgrade'}
+                {tower.towerRange}
               </Typography>
+              { correctOption.towerRange != tower.towerRange &&
+                <Icon path={correctOption.towerRange < tower.towerRange? mdiArrowDownBold : mdiArrowUpBold} size={1} />
+              }
             </TableCell>
           </TableRow>
         ))}
