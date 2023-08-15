@@ -4,6 +4,8 @@ import CustomOption from './components/customOption'
 import { Option, towerData, heroData } from './models/data';
 import SelectedOptionsTable from './components/selectedOptionsTable';
 import { Button, Grid, Typography } from '@mui/material';
+import HelpPopover from './components/helpPopover';
+import OptionsPopover from './components/optionsPopover';
 
 
 enum GameState {
@@ -55,16 +57,19 @@ const App: React.FC = () => {
       }
     }
   },[options, correctOption, selectedOptions])
+
+  const handleCloseOptions = () => {
+    console.log('close')
+  }
   
   return (
     <div style={{padding: '50px 100px'}}>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <Button variant="contained" disabled>
-            Options
-          </Button>
+        <Grid item xs={4}>
+          <HelpPopover />
+          <OptionsPopover handleClose={handleCloseOptions}/>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={4}>
           <Button variant="contained" onClick={() => newGame()}>
             New game
           </Button>
@@ -86,29 +91,6 @@ const App: React.FC = () => {
       { gState === GameState.WON &&
         <Typography variant='h6'> YOU WON</Typography>
       }
-      <div style={{position: 'absolute', bottom: 0}}>
-        <Typography variant='caption'>
-          Data is based on patch 38.0 
-        <Typography >
-        </Typography>
-          Tower data was taken from the bloons Wiki https://bloons.fandom.com/
-        <Typography >
-        </Typography>
-          Monkey knowedge not accounted for
-        <Typography >
-        </Typography>
-          Tower cost is based on hard mode costs
-        <Typography >
-        </Typography>
-          Hero stats are on level 1
-        <Typography >
-        </Typography>
-          Psi damage is set as 1
-        <Typography >
-        </Typography>
-          Towers with global range(sniper) or that move(heli) are counted as having 999 range
-        </Typography>
-      </div>
     </div>
   );
 };

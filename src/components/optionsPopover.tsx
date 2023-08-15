@@ -1,17 +1,26 @@
-import * as React from 'react';
+
 import Popover from '@mui/material/Popover';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import { ChangeEvent, MouseEvent, useState } from 'react';
+import { FormControlLabel, Switch } from '@mui/material';
 
-export default function BasicPopover() {
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
+interface OptionsPopoverProps {
+  handleClose: () => void
+}
+
+export default function OptionsPopover(props: OptionsPopoverProps) {
+  const {handleClose} = props;
+  const [checkUpgrades, setChecked] = useState(false);
+
+  const handleChangeUpgrades = (event: ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.checked);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
   };
 
   const open = Boolean(anchorEl);
@@ -20,19 +29,33 @@ export default function BasicPopover() {
   return (
     <div>
       <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-        Open Popover
+        Options
       </Button>
       <Popover
         id={id}
         open={open}
         anchorEl={anchorEl}
-        onClose={handleClose}
+        onClose={
+          () => {
+            setAnchorEl(null);
+            handleClose()
+          }
+        }
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
         }}
       >
-        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        <FormControlLabel
+          control={
+            <Switch 
+              checked={checkUpgrades}
+              onChange={handleChangeUpgrades}
+            />
+          }
+          label="Include upgrades"
+          labelPlacement="start"
+        />
       </Popover>
     </div>
   );
