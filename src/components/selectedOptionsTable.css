@@ -7,9 +7,3 @@
 .wrong {
   background: red;
 }
-
-.tableCell{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

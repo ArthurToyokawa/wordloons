@@ -2,19 +2,20 @@
 import Popover from '@mui/material/Popover';
 import Button from '@mui/material/Button';
 import { ChangeEvent, MouseEvent, useState } from 'react';
-import { FormControlLabel, Switch } from '@mui/material';
+import { Container, FormControlLabel, Switch } from '@mui/material';
+import GameSettings from '../models/options';
 
 
 interface OptionsPopoverProps {
-  handleClose: () => void
+  handleClose: (settings: GameSettings) => void
 }
 
 export default function OptionsPopover(props: OptionsPopoverProps) {
   const {handleClose} = props;
-  const [checkUpgrades, setChecked] = useState(false);
+  const [checkUpgrades, setCheckedUpgrades] = useState(false);
 
   const handleChangeUpgrades = (event: ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.checked);
+    setCheckedUpgrades(event.target.checked);
   };
 
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
@@ -38,7 +39,7 @@ export default function OptionsPopover(props: OptionsPopoverProps) {
         onClose={
           () => {
             setAnchorEl(null);
-            handleClose()
+            handleClose({useUpgrades: checkUpgrades})
           }
         }
         anchorOrigin={{
@@ -46,16 +47,18 @@ export default function OptionsPopover(props: OptionsPopoverProps) {
           horizontal: 'left',
         }}
       >
-        <FormControlLabel
-          control={
-            <Switch 
+        <Container>
+          <FormControlLabel
+            control={
+              <Switch 
               checked={checkUpgrades}
               onChange={handleChangeUpgrades}
-            />
-          }
-          label="Include upgrades"
-          labelPlacement="start"
-        />
+              />
+            }
+            label="Include upgrades"
+            labelPlacement="start"
+          />
+        </Container>
       </Popover>
     </div>
   );

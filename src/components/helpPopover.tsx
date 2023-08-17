@@ -3,6 +3,7 @@ import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { MouseEvent, useState } from 'react';
+import { Container } from '@mui/material';
 
 export default function HelpPopover() {
 
@@ -34,27 +35,29 @@ export default function HelpPopover() {
           horizontal: 'left',
         }}
       >
-        <Typography variant='caption'>
-          Data is based on patch 38.0 
-        <Typography >
-        </Typography>
-          Tower data was taken from the bloons Wiki https://bloons.fandom.com/ and the BTD6 api https://statsnite.com/btd/api
-        <Typography >
-        </Typography>
-          Monkey knowedge not accounted for
-        <Typography >
-        </Typography>
-          Tower cost is based on hard mode costs
-        <Typography >
-        </Typography>
-          Hero stats are on level 1
-        <Typography >
-        </Typography>
-          Psi damage is set as 1
-        <Typography >
-        </Typography>
-          Towers with global range(sniper) or that move(heli) are counted as having 999 range
-        </Typography>
+        <Container>
+          <Typography variant='caption'>
+            Data is based on patch 38.0 
+          <Typography >
+          </Typography>
+            Tower data was taken from the bloons Wiki https://bloons.fandom.com/ and the BTD6 api https://statsnite.com/btd/api
+          <Typography >
+          </Typography>
+            Monkey knowedge not accounted for
+          <Typography >
+          </Typography>
+            Tower cost is based on hard mode costs
+          <Typography >
+          </Typography>
+            Hero stats are on level 1
+          <Typography >
+          </Typography>
+            Psi damage is set as 1
+          <Typography >
+          </Typography>
+            Towers with global range(sniper) or that move(heli) are counted as having 999 range
+          </Typography>
+        </Container>
       </Popover>
     </div>
   );

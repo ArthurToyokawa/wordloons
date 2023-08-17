@@ -26,9 +26,10 @@ export type Option = {
   hasAbility: boolean // if has activatable ability
   class: TowerClass
   specialProperties: SpecialProperties[]
-  attackDamage: number,
+  attackDamage: number
   attackPierce: number
   towerRange: number
+  attackSpeed: number
 }
 
 export const towerData : Option[] = [
@@ -44,6 +45,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 2,
     towerRange: 32,
+    attackSpeed : 0.95,
   },
   {
     value: "boomerangmonkey",
@@ -57,6 +59,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 40,
+    attackSpeed : 1.42,
   },
   {
     value: "bombshooter",
@@ -70,6 +73,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 14,
     towerRange: 40,
+    attackSpeed : 1.5,
   },
   {
     value: "tackshooter",
@@ -83,6 +87,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 23,
+    attackSpeed : 1.4,
   },
   {
     value: "icemonkey",
@@ -96,6 +101,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 30,
     towerRange: 20,
+    attackSpeed : 2.4,
   },
   {
     value: "gluegunner",
@@ -109,6 +115,7 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 1,
     towerRange: 46,
+    attackSpeed : 1.0,
   },
   {
     value: "snipermonkey",
@@ -122,6 +129,7 @@ export const towerData : Option[] = [
     attackDamage: 2,
     attackPierce: 1,
     towerRange: 999,
+    attackSpeed : 1.59,
   },
   {
     value: "monkeysub",
@@ -135,6 +143,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 2,
     towerRange: 42,
+    attackSpeed : 0.75,
   },
   {
     value: "monkeybuccaneer",
@@ -148,6 +157,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 60,
+    attackSpeed : 1.0,
   },
   {
     value: "monkeyace",
@@ -161,6 +171,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 999,
+    attackSpeed : 1.68,
   },
   {
     value: "helipilot",
@@ -174,6 +185,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 999,
+    attackSpeed : 0.56,
   },
   {
     value: "mortarmonkey",
@@ -187,6 +199,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 40,
     towerRange: 999,
+    attackSpeed : 2.0,
   },
   {
     value: "dartlinggunner",
@@ -200,6 +213,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 999,
+    attackSpeed : 0.2,
   },
   {
     value: "wizardmonkey",
@@ -213,6 +227,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 40,
+    attackSpeed : 1.1,
   },
   {
     value: "supermonkey",
@@ -226,6 +241,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 50,
+    attackSpeed : 0.06,
   },
   {
     value: "ninjamonkey",
@@ -239,6 +255,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 2,
     towerRange: 40,
+    attackSpeed : 0.7,
   },
   {
     value: "alchemist",
@@ -252,6 +269,7 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 15,
     towerRange: 45,
+    attackSpeed : 2.0,
   },
   {
     value: "druid",
@@ -265,6 +283,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 35,
+    attackSpeed : 1.1,
   },
   {
     value: "bananafarm",
@@ -278,6 +297,7 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 0,
     towerRange: 40,
+    attackSpeed: 0,
   },
   {
     value: "spikefactory",
@@ -291,6 +311,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 34,
+    attackSpeed : 1.75,
   },
   {
     value: "monkeyvillage",
@@ -304,6 +325,7 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 0,
     towerRange: 40,
+    attackSpeed: 0,
   },
   {
     value: "engineermonkey",
@@ -317,6 +339,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 40,
+    attackSpeed : 0.7,
   },
   {
     value: "beasthandler",
@@ -330,6 +353,7 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 20,
+    attackSpeed: 1.4,
   },
 ]
 
@@ -347,6 +371,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 50,
+    attackSpeed: 0.95,
   },
   {
     value: "gwendolin",
@@ -360,6 +385,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 38,
+    attackSpeed: 0.5,
   },
   {
     value: "strikerjones",
@@ -373,6 +399,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 10,
     towerRange: 55,
+    attackSpeed: 1.2,
   },
   {
     value: "obyngreenfoot",
@@ -386,6 +413,7 @@ export const heroData : Option[] = [
     attackDamage: 2,
     attackPierce: 4,
     towerRange: 43,
+    attackSpeed: 1.35,
   },
   {
     value: "captainchurchill",
@@ -399,6 +427,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 63,
+    attackSpeed: 0.7,
   },
   {
     value: "benjamin",
@@ -412,6 +441,7 @@ export const heroData : Option[] = [
     attackDamage: 0,
     attackPierce: 0,
     towerRange: 20,
+    attackSpeed: 0,
   },
   {
     value: "ezili",
@@ -425,6 +455,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 43,
+    attackSpeed: 1.2,
   },
   {
     value: "patfusty",
@@ -438,6 +469,7 @@ export const heroData : Option[] = [
     attackDamage: 3,
     attackPierce: 1,
     towerRange: 24,
+    attackSpeed: 1.1,
   },
   {
     value: "adora",
@@ -451,6 +483,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 45,
+    attackSpeed: 1.0,
   },
   {
     value: "admiralbrickell",
@@ -464,6 +497,7 @@ export const heroData : Option[] = [
     attackDamage: 3,
     attackPierce: 1,
     towerRange: 50,
+    attackSpeed: 0.8,
   },
   {
     value: "etienne",
@@ -477,6 +511,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 2,
     towerRange: 55,
+    attackSpeed: 0.7,
   },
   {
     value: "sauda",
@@ -490,6 +525,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 23,
+    attackSpeed: 0.4,
   },
   {
     value: "psi",
@@ -503,6 +539,7 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 999,
+    attackSpeed: 1.0,
   },
   {
     value: "geraldo",
@@ -516,22 +553,23 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 40,
+    attackSpeed: 1.1,
   },
 ]
 
-export const upgradeData : Option[] = [
-  {
-    value: "sharpshots",
-    label: "Sharp shots",
-    cost: 150,
-    imageSrc: "src/assets/sharp-darts.png",
-    isUpgrade: true,
-    hasAbility: false,
-    class: TowerClass.Primary,
-    specialProperties: [],
-    attackDamage: 0,
-    attackPierce: 0,
-    towerRange: 0,
-  },
+// export const upgradeData : Option[] = [
+//   {
+//     value: "sharpshots",
+//     label: "Sharp shots",
+//     cost: 150,
+//     imageSrc: "src/assets/sharp-darts.png",
+//     isUpgrade: true,
+//     hasAbility: false,
+//     class: TowerClass.Primary,
+//     specialProperties: [],
+//     attackDamage: 0,
+//     attackPierce: 0,
+//     towerRange: 0,
+//   },
 
-]
+// ]

@@ -1,5 +1,5 @@
-type Options = {
+type GameSettings = {
   useUpgrades: boolean
 }
 
-export default Options;
+export default GameSettings;
