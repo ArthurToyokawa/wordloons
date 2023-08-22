@@ -16,6 +16,15 @@ export enum SpecialProperties {
 }
 //TODO put an water tower/land tower property
 
+export enum TowerTier {
+  Base,
+  Tier1,
+  Tier2,
+  Tier3,
+  Tier4,
+  Tier5,
+}
+
 
 export type Option = {
   value: string
@@ -30,6 +39,7 @@ export type Option = {
   attackPierce: number
   towerRange: number
   attackSpeed: number
+  towerTier: TowerTier
 }
 
 export const towerData : Option[] = [
@@ -46,6 +56,7 @@ export const towerData : Option[] = [
     attackPierce: 2,
     towerRange: 32,
     attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "boomerangmonkey",
@@ -59,7 +70,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 40,
-    attackSpeed : 1.42,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "bombshooter",
@@ -73,7 +85,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 14,
     towerRange: 40,
-    attackSpeed : 1.5,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "tackshooter",
@@ -87,7 +100,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 23,
-    attackSpeed : 1.4,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "icemonkey",
@@ -101,7 +115,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 30,
     towerRange: 20,
-    attackSpeed : 2.4,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "gluegunner",
@@ -115,7 +130,8 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 1,
     towerRange: 46,
-    attackSpeed : 1.0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "snipermonkey",
@@ -129,7 +145,8 @@ export const towerData : Option[] = [
     attackDamage: 2,
     attackPierce: 1,
     towerRange: 999,
-    attackSpeed : 1.59,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "monkeysub",
@@ -143,7 +160,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 2,
     towerRange: 42,
-    attackSpeed : 0.75,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "monkeybuccaneer",
@@ -157,7 +175,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 60,
-    attackSpeed : 1.0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "monkeyace",
@@ -171,7 +190,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 999,
-    attackSpeed : 1.68,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "helipilot",
@@ -185,7 +205,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 999,
-    attackSpeed : 0.56,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "mortarmonkey",
@@ -199,7 +220,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 40,
     towerRange: 999,
-    attackSpeed : 2.0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "dartlinggunner",
@@ -213,7 +235,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 999,
-    attackSpeed : 0.2,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "wizardmonkey",
@@ -227,7 +250,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 40,
-    attackSpeed : 1.1,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "supermonkey",
@@ -241,7 +265,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 50,
-    attackSpeed : 0.06,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "ninjamonkey",
@@ -255,7 +280,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 2,
     towerRange: 40,
-    attackSpeed : 0.7,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "alchemist",
@@ -269,7 +295,8 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 15,
     towerRange: 45,
-    attackSpeed : 2.0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "druid",
@@ -283,7 +310,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 35,
-    attackSpeed : 1.1,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "bananafarm",
@@ -297,7 +325,8 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 0,
     towerRange: 40,
-    attackSpeed: 0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "spikefactory",
@@ -311,7 +340,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 34,
-    attackSpeed : 1.75,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "monkeyvillage",
@@ -325,7 +355,8 @@ export const towerData : Option[] = [
     attackDamage: 0,
     attackPierce: 0,
     towerRange: 40,
-    attackSpeed: 0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "engineermonkey",
@@ -339,7 +370,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 40,
-    attackSpeed : 0.7,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "beasthandler",
@@ -353,7 +385,8 @@ export const towerData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 20,
-    attackSpeed: 1.4,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
 ]
 
@@ -371,7 +404,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 50,
-    attackSpeed: 0.95,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "gwendolin",
@@ -385,7 +419,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 38,
-    attackSpeed: 0.5,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "strikerjones",
@@ -399,7 +434,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 10,
     towerRange: 55,
-    attackSpeed: 1.2,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "obyngreenfoot",
@@ -413,7 +449,8 @@ export const heroData : Option[] = [
     attackDamage: 2,
     attackPierce: 4,
     towerRange: 43,
-    attackSpeed: 1.35,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "captainchurchill",
@@ -427,7 +464,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 3,
     towerRange: 63,
-    attackSpeed: 0.7,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "benjamin",
@@ -441,7 +479,8 @@ export const heroData : Option[] = [
     attackDamage: 0,
     attackPierce: 0,
     towerRange: 20,
-    attackSpeed: 0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "ezili",
@@ -455,7 +494,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 43,
-    attackSpeed: 1.2,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "patfusty",
@@ -469,7 +509,8 @@ export const heroData : Option[] = [
     attackDamage: 3,
     attackPierce: 1,
     towerRange: 24,
-    attackSpeed: 1.1,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "adora",
@@ -483,7 +524,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 45,
-    attackSpeed: 1.0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "admiralbrickell",
@@ -497,7 +539,8 @@ export const heroData : Option[] = [
     attackDamage: 3,
     attackPierce: 1,
     towerRange: 50,
-    attackSpeed: 0.8,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "etienne",
@@ -511,7 +554,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 2,
     towerRange: 55,
-    attackSpeed: 0.7,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "sauda",
@@ -525,7 +569,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 4,
     towerRange: 23,
-    attackSpeed: 0.4,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "psi",
@@ -539,7 +584,8 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 1,
     towerRange: 999,
-    attackSpeed: 1.0,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
   {
     value: "geraldo",
@@ -553,23 +599,85 @@ export const heroData : Option[] = [
     attackDamage: 1,
     attackPierce: 5,
     towerRange: 40,
-    attackSpeed: 1.1,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
   },
 ]
 
-// export const upgradeData : Option[] = [
-//   {
-//     value: "sharpshots",
-//     label: "Sharp shots",
-//     cost: 150,
-//     imageSrc: "src/assets/sharp-darts.png",
-//     isUpgrade: true,
-//     hasAbility: false,
-//     class: TowerClass.Primary,
-//     specialProperties: [],
-//     attackDamage: 0,
-//     attackPierce: 0,
-//     towerRange: 0,
-//   },
-
-// ]
+export const upgradeData : Option[] = [
+  {
+    value: "dartmonkey100",
+    label: "Dart monkey - Sharp Shots",
+    cost: 150,
+    imageSrc: "src/assets/dart-monkey/100.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 3,
+    towerRange: 32,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
+  },
+  {
+    value: "dartmonkey200",
+    label: "Dart monkey - Razor Sharp Shots",
+    cost: 235,
+    imageSrc: "src/assets/dart-monkey/200.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 5,
+    towerRange: 32,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
+  },
+  {
+    value: "dartmonkey300",
+    label: "Dart monkey - Spike-O-Pult",
+    cost: 325,
+    imageSrc: "src/assets/dart-monkey/300.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 1,
+    attackPierce: 22,
+    towerRange: 32,
+    attackSpeed : 1.15,
+    towerTier: TowerTier.Base,
+  },
+  {
+    value: "dartmonkey400",
+    label: "Dart monkey - Juggernaut",
+    cost: 1945,
+    imageSrc: "src/assets/dart-monkey/400.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 2,
+    attackPierce: 50,
+    towerRange: 36.8,
+    attackSpeed : 1.0,
+    towerTier: TowerTier.Base,
+  },
+  {
+    value: "dartmonkey500",
+    label: "Dart monkey - Ultra-Juggernaut",
+    cost: 16200,
+    imageSrc: "src/assets/dart-monkey/500.webp",
+    isUpgrade: false,
+    hasAbility: false,
+    class: TowerClass.Primary,
+    specialProperties: [],
+    attackDamage: 5,
+    attackPierce: 200,
+    towerRange: 32,
+    attackSpeed : 0.95,
+    towerTier: TowerTier.Base,
+  },
+]
