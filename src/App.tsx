@@ -5,8 +5,8 @@ import { Option, towerData, heroData } from "./models/data";
 import SelectedOptionsTable from "./components/selectedOptionsTable";
 import { Button, Grid, Typography } from "@mui/material";
 import HelpPopover from "./components/helpPopover";
-import OptionsPopover from "./components/optionsPopover";
-import GameSettings from "./models/options";
+import SettingsPopover from "./components/settingsPopover";
+import GameSettings from "./models/settings";
 import "./App.css";
 
 enum GameState {
@@ -17,21 +17,25 @@ enum GameState {
 const App: React.FC = () => {
   const [settings, setSettings] = useState<GameSettings>({
     useUpgrades: false,
+    useHeroes: true,
   });
   const [options, setOptions] = useState<Option[]>([...towerData, ...heroData]);
   const [correctOption, setCorrectOption] = useState<Option>();
   const [selectedOptions, setSelectedOptions] = useState<Option[]>([]);
   const [gState, setGState] = useState<GameState>(GameState.STARTED);
-  // TODO implement settings
+  const [settingsChanged, setSettingsChanged] = useState<boolean>(false);
 
   const newGame = useCallback(() => {
-    const options = [...towerData, ...heroData];
+    const options = [...towerData];
     if (settings.useUpgrades) {
       //append upgrades to options
     }
+    if (settings.useHeroes) {
+      options.push(...heroData);
+    }
+    setSettingsChanged(false);
     setOptions(options);
-    // setCorrectOption(getRandomOption(options));
-    setCorrectOption(heroData[2]);
+    setCorrectOption(getRandomOption(options));
     setSelectedOptions([]);
     setGState(GameState.STARTED);
   }, [settings]);
@@ -67,8 +71,14 @@ const App: React.FC = () => {
     [options, correctOption, selectedOptions]
   );
 
-  const handleCloseOptions = (settings: GameSettings) => {
-    setSettings(settings);
+  const handleCloseOptions = (newSettings: GameSettings) => {
+    if (
+      newSettings.useUpgrades !== settings.useUpgrades ||
+      newSettings.useHeroes !== settings.useHeroes
+    ) {
+      setSettingsChanged(true);
+      setSettings(newSettings);
+    }
   };
 
   return (
@@ -78,7 +88,7 @@ const App: React.FC = () => {
           <HelpPopover />
         </Grid>
         <Grid item xs={3}>
-          <OptionsPopover handleClose={handleCloseOptions} />
+          <SettingsPopover handleClose={handleCloseOptions} />
         </Grid>
         <Grid item xs={6}>
           <Button variant="contained" onClick={() => newGame()}>
@@ -102,6 +112,17 @@ const App: React.FC = () => {
             variant="h6"
           >
             YOU WON
+          </Typography>
+        </Grid>
+      )}
+      {settingsChanged && (
+        <Grid item xs={12}>
+          <Typography
+            sx={{ fontSize: "2rem" }}
+            className="bigText"
+            variant="h6"
+          >
+            Settings changed. Start a new game to use them
           </Typography>
         </Grid>
       )}
