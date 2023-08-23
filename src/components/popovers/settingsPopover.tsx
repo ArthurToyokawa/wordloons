@@ -2,7 +2,7 @@ import Popover from "@mui/material/Popover";
 import Button from "@mui/material/Button";
 import { MouseEvent, useState } from "react";
 import { Container, FormControlLabel, Switch } from "@mui/material";
-import GameSettings from "../models/settings";
+import GameSettings from "../../models/settings";
 
 interface SettingsPopoverProps {
   handleClose: (settings: GameSettings) => void;

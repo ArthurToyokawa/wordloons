@@ -8,17 +8,25 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { Option, SpecialProperties, TowerClass } from "../models/data";
+import {
+  Option,
+  SpecialProperties,
+  TowerClass,
+  TowerTier,
+} from "../../models/data";
 
 import Icon from "@mdi/react";
 import { mdiArrowDownBold, mdiArrowUpBold } from "@mdi/js";
+import GameSettings from "../../models/settings";
 
 interface SelectedOptionsTableProps {
+  settings: GameSettings;
   selectedOptions: Option[];
   correctOption: Option;
 }
 
 const SelectedOptionsTable = ({
+  settings,
   selectedOptions,
   correctOption,
 }: SelectedOptionsTableProps) => {
@@ -34,9 +42,6 @@ const SelectedOptionsTable = ({
       const match = towerProperties.filter((p) => {
         return correctProps.indexOf(p) !== -1;
       });
-      console.log(correctProps);
-      console.log(towerProperties);
-      console.log(match);
       if (match.length === 0) {
         return "wrong";
       } else if (correctProps.length !== towerProperties.length) {
@@ -48,13 +53,29 @@ const SelectedOptionsTable = ({
       }
     }
   };
-
+  const compareTowerId = (towerName: string): string => {
+    if (towerName === correctOption.value) {
+      return "right";
+    }
+    const correctNameNoUp = correctOption.value.replace(/\d{3}/, "");
+    const towerNameNoUp = towerName.replace(/\d{3}/, "");
+    if (correctNameNoUp === towerNameNoUp) {
+      return "partiallyRight";
+    }
+    return "wrong";
+  };
   return (
     <TableContainer>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell align="center">Tower</TableCell>
+            {settings.useUpgrades && (
+              <TableCell align="center">Upgrade</TableCell>
+            )}
+            {settings.useUpgrades && (
+              <TableCell align="center">UpgradeTier</TableCell>
+            )}
             <TableCell align="center">Class</TableCell>
             <TableCell align="center">Cost</TableCell>
             <TableCell align="center">Special Properties</TableCell>
@@ -67,9 +88,7 @@ const SelectedOptionsTable = ({
           {selectedOptions.map((tower) => (
             <TableRow key={tower.label} sx={{ border: 0 }}>
               <TableCell
-                className={
-                  correctOption.class === tower.class ? "right" : "wrong"
-                }
+                className={compareTowerId(tower.value)}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -87,6 +106,28 @@ const SelectedOptionsTable = ({
                 />
                 <Typography>{tower.label}</Typography>
               </TableCell>
+              {settings.useUpgrades && (
+                <TableCell
+                  className={
+                    correctOption.towerTier === tower.towerTier
+                      ? "right"
+                      : "partiallyRight"
+                  }
+                  align="center"
+                >
+                  <Typography>{TowerTier[tower.towerTier]}</Typography>
+                  {correctOption.towerTier != tower.towerTier && (
+                    <Icon
+                      path={
+                        correctOption.towerTier < tower.towerTier
+                          ? mdiArrowDownBold
+                          : mdiArrowUpBold
+                      }
+                      size={1}
+                    />
+                  )}
+                </TableCell>
+              )}
               <TableCell
                 className={
                   correctOption.class === tower.class ? "right" : "wrong"
