@@ -1,4 +1,3 @@
-import React from "react";
 import "./customOption.css";
 import { Option } from "../../models/data";
 
