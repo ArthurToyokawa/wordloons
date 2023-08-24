@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
-import CustomOption from "./components/customOption";
-import { Option, towerData, heroData } from "./models/data";
-import SelectedOptionsTable from "./components/selectedOptionsTable";
+import CustomOption from "./components/optionsSelector/customOption";
+import { Option, towerData, heroData, upgradeData } from "./models/data";
+import SelectedOptionsTable from "./components/optionsTable/selectedOptionsTable";
 import { Button, Grid, Typography } from "@mui/material";
-import HelpPopover from "./components/helpPopover";
-import SettingsPopover from "./components/settingsPopover";
+import HelpPopover from "./components/popovers/helpPopover";
+import SettingsPopover from "./components/popovers/settingsPopover";
 import GameSettings from "./models/settings";
 import "./App.css";
 
@@ -28,7 +28,7 @@ const App: React.FC = () => {
   const newGame = useCallback(() => {
     const options = [...towerData];
     if (settings.useUpgrades) {
-      //append upgrades to options
+      options.push(...upgradeData);
     }
     if (settings.useHeroes) {
       options.push(...heroData);
@@ -140,6 +140,7 @@ const App: React.FC = () => {
       {correctOption && selectedOptions.length > 0 && (
         <div>
           <SelectedOptionsTable
+            settings={settings}
             selectedOptions={selectedOptions}
             correctOption={correctOption}
           />
