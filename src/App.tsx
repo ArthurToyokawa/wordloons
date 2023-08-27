@@ -8,6 +8,7 @@ import HelpPopover from "./components/popovers/helpPopover";
 import SettingsPopover from "./components/popovers/settingsPopover";
 import GameSettings from "./models/settings";
 import "./App.css";
+import getDailyTower from "./services/getDaily";
 
 enum GameState {
   STARTED,
@@ -18,6 +19,7 @@ const App: React.FC = () => {
   const [settings, setSettings] = useState<GameSettings>({
     useUpgrades: false,
     useHeroes: true,
+    dailyGameStarted: false,
   });
   const [options, setOptions] = useState<Option[]>([...towerData, ...heroData]);
   const [correctOption, setCorrectOption] = useState<Option>();
@@ -35,9 +37,21 @@ const App: React.FC = () => {
     }
     setSettingsChanged(false);
     setOptions(options);
-    setCorrectOption(getRandomOption(options));
     setSelectedOptions([]);
     setGState(GameState.STARTED);
+    setCorrectOption(getRandomOption(options));
+  }, [settings]);
+  
+  const newDailyGame = useCallback(() => {
+    const options = [...towerData, ...heroData];
+    settings.dailyGameStarted = true;
+    setSettings(settings)
+    setSettingsChanged(false);
+    setOptions(options);
+    setSelectedOptions([]);
+    setGState(GameState.STARTED);
+    const dailyTowerIndex = getDailyTower(options.length);
+    setCorrectOption(options[dailyTowerIndex]);
   }, [settings]);
 
   useEffect(() => {
@@ -65,6 +79,8 @@ const App: React.FC = () => {
         setSelectedOptions([...selectedOptions, option]);
         if (option.value === correctOption?.value) {
           setGState(GameState.WON);
+          settings.dailyGameStarted = false;
+          setSettings(settings)
         }
       }
     },
@@ -88,11 +104,14 @@ const App: React.FC = () => {
           <HelpPopover />
         </Grid>
         <Grid item xs={3}>
-          <SettingsPopover handleClose={handleCloseOptions} />
+          <SettingsPopover settings={settings} handleClose={handleCloseOptions} />
         </Grid>
         <Grid item xs={6}>
           <Button variant="contained" onClick={() => newGame()}>
             New game
+          </Button>
+          <Button variant="contained" disabled={settings.dailyGameStarted} onClick={() => newDailyGame()}>
+            Daily challenge
           </Button>
         </Grid>
         <Grid item xs={12}>
@@ -127,15 +146,15 @@ const App: React.FC = () => {
         </Grid>
       )}
       {selectedOptions.length === 0 && gState === GameState.STARTED && (
-        <Grid item xs={12}>
+          <Grid item xs={12}>
           <Typography
-            sx={{ fontSize: "2rem" }}
-            className="bigText"
-            variant="h6"
+          sx={{ fontSize: "2rem" }}
+          className="bigText"
+          variant="h6"
           >
-            Select a tower to start
+          { settings.dailyGameStarted? 'Daily game: Select a tower to start' : 'Select a tower to start'}
           </Typography>
-        </Grid>
+          </Grid>
       )}
       {correctOption && selectedOptions.length > 0 && (
         <div>

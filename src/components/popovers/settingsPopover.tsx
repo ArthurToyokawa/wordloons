@@ -5,11 +5,12 @@ import { Container, FormControlLabel, Switch } from "@mui/material";
 import GameSettings from "../../models/settings";
 
 interface SettingsPopoverProps {
+  settings: GameSettings
   handleClose: (settings: GameSettings) => void;
 }
 
 export default function SettingsPopover(props: SettingsPopoverProps) {
-  const { handleClose } = props;
+  const { handleClose, settings } = props;
   const [checkUpgrades, setCheckedUpgrades] = useState(false);
   const [checkHeroes, setCheckedHeroes] = useState(true);
 
@@ -33,7 +34,7 @@ export default function SettingsPopover(props: SettingsPopoverProps) {
         anchorEl={anchorEl}
         onClose={() => {
           setAnchorEl(null);
-          handleClose({ useUpgrades: checkUpgrades, useHeroes: checkHeroes });
+          handleClose({ useUpgrades: checkUpgrades, useHeroes: checkHeroes, dailyGameStarted: settings.dailyGameStarted});
         }}
         anchorOrigin={{
           vertical: "bottom",
@@ -44,6 +45,7 @@ export default function SettingsPopover(props: SettingsPopoverProps) {
           <FormControlLabel
             control={
               <Switch
+                disabled={true}
                 checked={checkUpgrades}
                 onChange={(evt) => {
                   setCheckedUpgrades(evt.target.checked);
